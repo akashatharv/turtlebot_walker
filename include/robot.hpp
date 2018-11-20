@@ -1,5 +1,5 @@
 /**============================================================================
- * @file       : main.cpp
+ * @file       : robot.hpp
  * @author     : Akash Atharv
  * @version    : 1.0
  * @Copyright  : 3-Clause BSD
@@ -32,16 +32,30 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF 
 THE POSSIBILITY OF SUCH DAMAGE.
- * @brief      :Main file to initiate walker node
+ * @brief      :Header file for declaration of functions used for walker node
  *============================================================================
  */
+#ifndef INCLUDE_ROBOT_HPP_
+#define INCLUDE_ROBOT_HPP_
 
-#include "robot.hpp"
+#include <geometry_msgs/Twist.h>
+#include <sensor_msgs/LaserScan.h>
+#include "ros/ros.h"
+#include "ros/console.h"
 
-int main(int argc, char **argv)
-{
-      ros::init(argc, argv, "walker");
-      Robot robot;
-      robot.run();
-      return 0;
-}
+class Robot {
+ public:
+
+      Robot();
+
+      ~Robot();
+      void scanCallback(const sensor_msgs::LaserScan::ConstPtr& msg);
+      void run();
+ private:
+      bool collision;
+      geometry_msgs::Twist msg;
+      ros::NodeHandle n;
+      ros::Subscriber sub;
+      ros::Publisher pub;
+};
+#endif /* INCLUDE_ROBOT_HPP_ */

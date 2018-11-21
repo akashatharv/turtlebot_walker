@@ -82,3 +82,4 @@ You can view all the messages in any topic of interest using
 ```
 rostopic echo <topic name>
 ```
+Note: Gazebo should not be running during rosbag playback

@@ -75,7 +75,7 @@ Robot::~Robot() {
  * @return void
  */
 void Robot::scanCallback(const sensor_msgs::LaserScan::ConstPtr& msg) {
-      for (int i=0;i < msg->ranges.size(); i++) {
+      for (int i=0; i < msg->ranges.size(); i++) {
              if (msg->ranges[i] < 0.65) {
                      collision = true;
                      break;
@@ -92,16 +92,14 @@ void Robot::run() {
 // Publishing rate is set up at 10Hz
       ros::Rate loop_rate(10);
 // Condition to keep running, until ROS functions properly
-      while(ros::ok()) {
+      while (ros::ok()) {
 // Obstacles are checked
-           if(collision) {
+           if (collision) {
 // Collision is expected, Robot is turned
                 ROS_INFO("Collision is expected, Turning to avoid object");
                 msg.linear.x = 0.0;
                 msg.angular.z = 0.5;
-           }
-// Collision is not expected, Robot moves forward
-           else {
+           } /* Collision is expected, Robot is turned*/else {
                 ROS_INFO("No collision is expected, Moving straight");
                 msg.linear.x = 0.5;
                 msg.angular.z = 0;
@@ -110,8 +108,5 @@ void Robot::run() {
       pub.publish(msg);
       ros::spinOnce();
       loop_rate.sleep();
-
       }
 }
-
-

@@ -67,6 +67,7 @@ class Robot {
  * @return void
  */
       void run();
+
  private:
 // Declare variable to store collision predictions
       bool collision;
@@ -79,4 +80,4 @@ class Robot {
 // Publisher for publishing velocity to the turtlebot
       ros::Publisher pub;
 };
-#endif /* INCLUDE_ROBOT_HPP_ */
+#endif  // INCLUDE_ROBOT_HPP_

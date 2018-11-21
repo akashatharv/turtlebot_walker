@@ -21,7 +21,7 @@ catkin_package()
 ## Your package locations should be listed before other locations
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(walker src/main.cpp)
+add_executable(walker src/main.cpp src/robot.cpp)
 target_link_libraries(walker ${catkin_LIBRARIES})
 
 #if(CATKIN_ENABLE_TESTING)

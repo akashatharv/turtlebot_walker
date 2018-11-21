@@ -3,9 +3,18 @@
     <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
            <arg name="world_file" value ="$(find turtlebot_gazebo)/worlds/corridor.world"/>
     </include>
+    <arg name="status" default="false" />
     <node
         pkg = "turtlebot_walker"
         name = "walker"
         type = "walker"
     />
+    <node
+        pkg = "rosbag"
+        name = "record"
+        type = "record"
+        args = "-a -x /camera/(.*) -O $(find turtlebot_walker)/results/result.bag"
+        if = "$(arg status)"
+    />
+
 </launch>

@@ -78,12 +78,12 @@ void Robot::run() {
            if(collision) {
                 ROS_INFO("Collision is expected, Turning to avoid object");
                 msg.linear.x = 0.0;
-                msg.angular.z = 0.1;
+                msg.angular.z = 0.5;
            }
 
            else {
                 ROS_INFO("No collision is expected, Moving straight");
-                msg.linear.x = 0.1;
+                msg.linear.x = 0.5;
                 msg.angular.z = 0;
            }
 

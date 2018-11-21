@@ -38,10 +38,18 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "robot.hpp"
 
-int main(int argc, char **argv)
-{
+/**
+ * @brief Main function where the node "walker" is created and operates
+ * @param argc number of input arguments
+ * @param argv argument for calling main function
+ * @return int (typically 0 if main function works properly)
+ */
+int main(int argc, char **argv) {
+// ROS node initialization
       ros::init(argc, argv, "walker");
+// Object creation of class walker
       Robot robot;
+// Function call to run overall functionality of the system
       robot.run();
       return 0;
 }

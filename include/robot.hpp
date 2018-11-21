@@ -42,20 +42,41 @@ THE POSSIBILITY OF SUCH DAMAGE.
 #include <sensor_msgs/LaserScan.h>
 #include "ros/ros.h"
 #include "ros/console.h"
-
+/**
+ * @brief Class for node walker
+ */
 class Robot {
  public:
-
+/**
+ * @brief Constructor
+ */
       Robot();
-
+/**
+ * @brief Destructor
+ */
       ~Robot();
+/**
+ * @brief Callback function for walker
+ * @param msg Message over the topic /scan
+ * @return void 
+ */
       void scanCallback(const sensor_msgs::LaserScan::ConstPtr& msg);
+/**
+ * @brief Function to run the overall functionality
+ * @param None
+ * @return void
+ */
       void run();
  private:
+// Declare variable to store collision predictions
       bool collision;
+// Declare variable to store to-be published velocities
       geometry_msgs::Twist msg;
+// Create a ROS node handle
       ros::NodeHandle n;
+// Subscriber for subscribing to the /scan topic for incoming data
       ros::Subscriber sub;
+// Publisher for publishing velocity to the turtlebot
       ros::Publisher pub;
 };
 #endif /* INCLUDE_ROBOT_HPP_ */

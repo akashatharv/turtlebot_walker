@@ -67,13 +67,12 @@ roslaunch turtlebot_walker robot.launch status:=true
 Status is a flag which is false by default which means that rosbag recording is disabled. It can be set to true as shown in commands above to record messages over all topics except /camera/*(because if we include these topics, bag file size rises astronomically) in a bag file.
 
 Press ctrl+C in the active window to terminate the execution
-The resultant bag file can be found in the results directory of the repository
-To get details regarding the newly created bag file type
+The resultant bag file can be found in the results directory of the repository. To get details regarding the newly created bag file type
 ```
 cd <path to your repository>/results
 rosbag info result.bag
 ```
-To visualize the data recorded on the screen, first run roscore and then navigate to the above directory( if launch file is not used, navigate to /.ros directory) in a different terminal
+To visualize the data recorded on the screen, first run roscore and then navigate to the above directory( if launch file is not used, navigate to the directory where the bag file is stored) in a different terminal
 and use rosbag play 
 ```
 rosbag play result.bag
